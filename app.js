@@ -3,11 +3,11 @@ const app = express();
 const middleware = function (req, res, next) {
     console.log("Yeni bir istek geldi.");
     next();
-  };
+};
 const middleware2= function (req, res, next){
     console.log("Post isteği için istek gönderildi.");
     next();
-}
+};
 app.get("/hello",middleware,function(req,res){
     res.send("Merhaba get isteği attınız.");
 });
