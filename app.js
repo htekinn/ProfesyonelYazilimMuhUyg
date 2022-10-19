@@ -4,20 +4,24 @@ const middleware = function (req, res, next) {
     console.log("Yeni bir istek geldi.");
     next();
   };
-app.get("/",middleware,function(req,res){
+const middleware2= function (req, res, next){
+    console.log("Post isteği için istek gönderildi.");
+    next();
+}
+app.get("/hello",middleware,function(req,res){
     res.send("Merhaba get isteği attınız.");
 });
 
-app.post("/hello",function(req,res){
+app.post("/hello",middleware2,middleware,function(req,res){
     res.send("Merhaba post isteği attınız.");
 });
 
-app.put("/",function(req,res){
+app.put("/hello",middleware,function(req,res){
     res.send("Merhaba put isteği attınız.");
 });
 
-app.delete("/",function(req,res){
+app.delete("/hello",middleware,function(req,res){
     res.send("Merhaba delete isteği attınız.");
 });
-app.listen(3003);
+app.listen(3000);
 
